@@ -36,3 +36,5 @@ const Home: FC = async () => {
 };
 
 export default Home;
+
+export const revalidate = 0;
