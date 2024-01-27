@@ -11,7 +11,7 @@ interface ITodoItemPros {
 
 const TodoItem: FC<ITodoItemPros> = ({ id, title, complete, toggleTodo }) => {
   return (
-    <li className="flex gap-1 items-center">
+    <li className="flex items-center border border-slate-50 p-3 rounded-lg">
       <input
         id={id}
         type="checkbox"
@@ -21,7 +21,7 @@ const TodoItem: FC<ITodoItemPros> = ({ id, title, complete, toggleTodo }) => {
       />
       <label
         htmlFor={id}
-        className="cursor-pointer peer-checked:line-through peer-checked:text-slate-500"
+        className="cursor-pointer peer-checked:line-through peer-checked:text-slate-500 px-2"
       >
         {title}
       </label>

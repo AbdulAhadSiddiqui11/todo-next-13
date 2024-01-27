@@ -26,7 +26,7 @@ const Home: FC = async () => {
           New
         </Link>
       </header>
-      <ul className="pl-4">
+      <ul className="flex flex-col gap-3 flex-wrap pl-4">
         {todos.map((todo) => (
           <TodoItem key={todo.id} {...todo} toggleTodo={toggleTodo} />
         ))}
