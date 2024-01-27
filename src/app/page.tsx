@@ -3,10 +3,16 @@ import { FC } from "react";
 import { prisma } from "@/db";
 import TodoItem from "@/components/TodoItem";
 
-const getTodos = async () => await prisma.todo.findMany();
+const getTodos = async () => {
+  "use server";
+  return await prisma.todo.findMany();
+};
+const toggleTodo = async (id: string, complete: boolean) => {
+  "use server";
+  await prisma.todo.update({ where: { id }, data: { complete } });
+};
 
 const Home: FC = async () => {
-  //await prisma.todo.create({ data: { title: "Bazinga!", complete: false } });
   const todos = await getTodos();
 
   return (
@@ -22,7 +28,7 @@ const Home: FC = async () => {
       </header>
       <ul className="pl-4">
         {todos.map((todo) => (
-          <TodoItem key={todo.id}  {...todo} />
+          <TodoItem key={todo.id} {...todo} toggleTodo={toggleTodo} />
         ))}
       </ul>
     </>
